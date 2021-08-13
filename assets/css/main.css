@@ -1,0 +1,21 @@
+/*Page component */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+/*Layout Transition*/
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.2s;
+}
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
+}
+.nuxt-link-active {
+  @apply text-gray-800 border-red-600 ;
+}
