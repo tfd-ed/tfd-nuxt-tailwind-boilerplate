@@ -110,6 +110,7 @@
           </p>
           <div class="flex items-end space-x-2 my-6">
             <a href="#" class="block relative">
+              <!--              Generate random avatar on https://avatars.dicebear.com/docs/http-api-->
               <nuxt-img
                 alt="profil"
                 :src="
