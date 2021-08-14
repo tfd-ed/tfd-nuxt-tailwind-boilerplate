@@ -409,7 +409,11 @@ export default {
       } catch (error) {
         this.ifError = true;
         console.log(error.response.data.message);
-        this.errorMsg = error.response.data.message;
+        if (error.response.data.message.length > 0) {
+          this.errorMsg = error.response.data.message.join("<br />");
+        } else {
+          this.errorMsg = error.response.data.message;
+        }
         this.$fetch();
       }
       this.cancelEdit();

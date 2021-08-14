@@ -105,7 +105,7 @@ export default {
       } catch (error) {
         this.ifError = true;
         if (error.response.data.message.length > 0) {
-          this.errorMsg = error.response.data.message[0];
+          this.errorMsg = error.response.data.message.join("<br />");
         } else {
           this.errorMsg = error.response.data.message;
         }

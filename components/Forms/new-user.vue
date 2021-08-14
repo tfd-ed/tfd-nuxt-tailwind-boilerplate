@@ -8,7 +8,11 @@
         <div>
           <nuxt-img
             alt="profil"
-            src="https://avatars.dicebear.com/api/male/jonh.svg?background=%230000ff"
+            :src="
+              'https://avatars.dicebear.com/api/male/' +
+              username +
+              '.svg?background=%230000ff'
+            "
             class="mx-auto object-cover rounded-full h-20 w-20"
           />
           <h2 class="mt-6 text-center text-4xl font-bold text-gray-700">
