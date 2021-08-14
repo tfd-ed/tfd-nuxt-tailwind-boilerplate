@@ -52,7 +52,7 @@ const settings = {
     props: {
       fixedClasses: {
         overlay:
-          "z-100 overflow-auto scrolling-touch left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-opacity-50",
+          "z-90 overflow-auto scrolling-touch left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-opacity-50",
         wrapper: "relative mx-auto z-90 max-w-lg px-3 py-12",
         modal: "overflow-visible relative  rounded",
         body: "p-3",
@@ -132,7 +132,7 @@ const settings = {
     props: {
       fixedClasses: {
         wrapper:
-          "fixed mt-10 text-center inset-x-0 top-0 flex items-center w-2/4 p-4 border-l-4  rounded shadow-sm z-90 justify-center inset-x-0 md:w-2/5 mx-auto",
+          "fixed mt-10 text-center inset-x-0 top-0 flex items-center w-2/4 p-4 border-l-4  rounded shadow-sm z-100 justify-center inset-x-0 md:w-2/5 mx-auto",
         body: "flex-grow",
         close:
           "relative flex items-center justify-center ml-4 flex-shrink-0 w-6 h-6 transition duration-100 ease-in-out rounded  focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50",
