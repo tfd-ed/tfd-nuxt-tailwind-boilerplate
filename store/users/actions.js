@@ -22,12 +22,13 @@ export default {
     const user = users.find((item) => {
       return item.id === id;
     });
-    // eslint-disable-next-line no-unused-vars
     const response = await this.$axios.$put(`/api/v1/user/${id}`, {
       username: user.username,
       name: user.name,
       email: user.email,
     });
+    console.log(response);
+    commit("UPDATE_LOGGED_USER", response, { root: true });
   },
   // eslint-disable-next-line no-unused-vars
   async deleteUser({ dispatch, commit, getters, rootGetters }, id) {
