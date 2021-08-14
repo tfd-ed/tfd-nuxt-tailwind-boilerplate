@@ -16,4 +16,23 @@ export default {
     });
     commit("ADD_USER", response);
   },
+  // eslint-disable-next-line no-unused-vars
+  async updateUser({ dispatch, commit, getters, rootGetters }, id) {
+    const users = getters["getUsers"];
+    const user = users.find((item) => {
+      return item.id === id;
+    });
+    // eslint-disable-next-line no-unused-vars
+    const response = await this.$axios.$put(`/api/v1/user/${id}`, {
+      username: user.username,
+      name: user.name,
+      email: user.email,
+    });
+  },
+  // eslint-disable-next-line no-unused-vars
+  async deleteUser({ dispatch, commit, getters, rootGetters }, id) {
+    // eslint-disable-next-line no-unused-vars
+    const response = await this.$axios.$delete(`/api/v1/user/${id}`);
+    commit("REMOVE_USER", id);
+  },
 };

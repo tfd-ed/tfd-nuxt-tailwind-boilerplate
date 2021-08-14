@@ -16,5 +16,11 @@ export default {
       confirmPassword: "",
     };
   },
+  REMOVE_USER(state, id) {
+    let index = state.users.findIndex(function (o) {
+      return o.id === id;
+    });
+    if (index !== -1) state.users.splice(index, 1);
+  },
   updateField,
 };
