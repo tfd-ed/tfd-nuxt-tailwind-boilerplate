@@ -117,7 +117,7 @@ export default {
         this.clear();
       } catch (error) {
         this.ifError = true;
-        if (error.response.data.message.length > 0) {
+        if (Array.isArray(error.response.data.message)) {
           this.errorMsg = error.response.data.message.join("<br />");
         } else {
           this.errorMsg = error.response.data.message;

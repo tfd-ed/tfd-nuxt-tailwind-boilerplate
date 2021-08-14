@@ -6,7 +6,7 @@
       :timeout="3000"
       @hidden="ifError = false"
     >
-      {{ errorMsg }}
+      <span v-html="errorMsg"></span>
     </t-alert>
     <t-alert
       :show="isSuccess"
@@ -409,7 +409,7 @@ export default {
       } catch (error) {
         this.ifError = true;
         console.log(error.response.data.message);
-        if (error.response.data.message.length > 0) {
+        if (Array.isArray(error.response.data.message)) {
           this.errorMsg = error.response.data.message.join("<br />");
         } else {
           this.errorMsg = error.response.data.message;
