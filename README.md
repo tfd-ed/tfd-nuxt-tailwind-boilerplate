@@ -19,9 +19,9 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="55" alt="TFD Logo" />
 </p>
 
-<h1>NuxtJs + TailwindCss + ESLint Boilerplate 
+<h1>Nuxt JS + Tailwind CSS + ESLint Boilerplate 
   <a
-    href="http://nestjs.com/"
+    href="https://nestjs.com/"
     target="blank"
   >
 <br/>
@@ -45,12 +45,12 @@
 
 ## Features
 
-This is a NuxtJs + TailwindCss boilerplate code with preconfigured libraries and packages with the following features:
+This is a Nuxt JS + Tailwind CSS boilerplate code with preconfigured libraries and packages with the following features:
 
-- Preconfigured [VueTailwind](https://www.vue-tailwind.com/) with higly customizable tailwind module
+- Preconfigured [VueTailwind](https://www.vue-tailwind.com/) with highly customizable tailwind module
 - Integrated [nuxt/axios](https://axios.nuxtjs.org/) for promise based HTTP client
 - Integrated [nuxt/auth](https://auth.nuxtjs.org/) for authentication
-- Integrated [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/) to replace vanilla  ``<img>`` html tag for better image oprimization
+- Integrated [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/) to replace vanilla  ``<img>`` HTML tag for better image optimization
 - Integrated [@nuxtjs/moment](https://www.npmjs.com/package/@nuxtjs/moment) for time formatting
 - Smooth configurable page, layout transition at ``@/assets/css/main``
 - Built-in awesome content loader using [vue-content-loader](https://www.npmjs.com/package/vue-content-loader)  
