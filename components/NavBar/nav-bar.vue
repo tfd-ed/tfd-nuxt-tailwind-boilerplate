@@ -1,5 +1,5 @@
 <template>
-  <section class="h-24 sm:h-32 flex items-center w-full bg-gray-100">
+  <section class="sticky top-0 z-20 h-24 sm:h-32 flex items-center w-full bg-gray-100">
     <div class="container mx-auto px-6 flex items-center justify-between">
       <div class="flex items-center">
         <nav

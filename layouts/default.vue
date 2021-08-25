@@ -5,8 +5,8 @@
       font-sans
       bg-white
       relative
-      overflow-hidden
       h-screen
+      overflow-auto overflow-y-scroll
     "
   >
     <NavBar></NavBar>
