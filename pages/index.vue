@@ -35,6 +35,7 @@
             type="password"
           />
           <t-button
+            v-if="isGeeTestLoaded"
             type="submit"
             classes="mt-16 w-full bg-green-400 text-white font-semibold text-sm uppercase rounded-md"
             >Login</t-button
