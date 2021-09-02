@@ -19,6 +19,7 @@
     "epic-spinners": "^1.1.0",
     "nuxt": "^2.15.7",
     "vue-content-loader": "0.2",
+    "vue-social-captcha": "^0.1.1",
     "vue-tailwind": "^2.4.2"
   },
   "devDependencies": {

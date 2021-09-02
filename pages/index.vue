@@ -141,33 +141,89 @@ export default {
       errorMsg: "",
       isSuccess: false,
       ifError: false,
+      isGeeTestLoaded: false,
+      geetest: {},
+      verified: false,
     };
+  },
+  head() {
+    return {
+      script: [
+        {
+          hid: "geetest",
+          src: "https://www.geetest.com/demo/libs/gt.js",
+          defer: true,
+          // Changed after script load
+          callback: () => {
+            this.isGeeTestLoaded = true;
+          },
+        },
+      ],
+    };
+  },
+  mounted() {
+    this.initialize();
   },
   methods: {
     showLogin() {
       this.$modal.show("login");
     },
     async login() {
-      this.$modal.hide("login");
-      this.logging = true;
-      try {
-        const response = await this.$auth.loginWith("local", {
-          data: {
-            username: this.username,
-            password: this.password,
-          },
-        });
-        await this.$auth.setUser(response.data.user);
-        await this.$router.push("/dashboard");
-        this.logging = false;
-        this.username = "";
-        this.password = "";
-      } catch (e) {
-        this.logging = false;
-        this.$modal.show("login");
-        this.ifError = true;
-        this.errorMsg = e.response.data.message;
+      if (!this.verified) {
+        this.geetest.verify();
+      } else {
+        this.$modal.hide("login");
+        this.logging = true;
+        try {
+          const response = await this.$auth.loginWith("local", {
+            data: {
+              username: this.username,
+              password: this.password,
+            },
+          });
+          await this.$auth.setUser(response.data.user);
+          await this.$router.push("/dashboard");
+          this.logging = false;
+          this.username = "";
+          this.password = "";
+          this.verified = false;
+        } catch (e) {
+          this.geetest.reset();
+          this.logging = false;
+          this.$modal.show("login");
+          this.ifError = true;
+          this.errorMsg = e.response.data.message;
+        }
       }
+    },
+    async initialize() {
+      const res = await this.$axios.$get(
+        "/api/v1/geetest/register?t=" + +new Date().getTime()
+      );
+      let web = this;
+      initGeetest(
+        {
+          gt: res.gt,
+          challenge: res.challenge,
+          new_captcha: res.new_captcha,
+          offline: !res.success,
+          product: "bind",
+          lang: "en",
+        },
+        function (captchaObj) {
+          web.geetest = captchaObj;
+          captchaObj
+            .onSuccess(function () {
+              var result = captchaObj.getValidate();
+              console.log(result);
+              web.verified = true;
+              web.login();
+            })
+            .onError(function () {
+              web.verified = false;
+            });
+        }
+      );
     },
   },
 };
