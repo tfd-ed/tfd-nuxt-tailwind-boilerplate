@@ -151,9 +151,7 @@ export default {
     return {
       script: [
         {
-          hid: "geetest",
-          src: "https://www.geetest.com/demo/libs/gt.js",
-          defer: true,
+          src: "/js/gt.js",
           // Changed after script load
           callback: () => {
             this.isGeeTestLoaded = true;
