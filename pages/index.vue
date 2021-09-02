@@ -189,6 +189,7 @@ export default {
           this.password = "";
           this.verified = false;
         } catch (e) {
+          this.verified = false;
           this.geetest.reset();
           this.logging = false;
           this.$modal.show("login");
