@@ -1,9 +1,10 @@
+import createSitemapRoutes from "./utils/createSitemap";
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "TFD Nuxt Tailwind Boilerplate",
     htmlAttrs: {
-      lang: "en",
+      lang: "kh",
     },
     meta: [
       { charset: "utf-8" },
@@ -12,7 +13,15 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    script: [
+      {
+        src: "https://cdn.jsdelivr.net/npm/kutty@latest/dist/kutty.min.js",
+        async: true,
+        crossorigin: "anonymous",
+      },
+    ],
   },
+  target: "server",
   manifest: {
     name: "TFD Nuxt Frontend",
     short_name: "TFD Nuxt",
@@ -22,7 +31,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["@/assets/css/main.css"],
+  css: ["@/assets/css/main.css", "@/assets/css/tailwind.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: "~/plugins/tailwind-components.js" }],
@@ -37,7 +46,13 @@ export default {
     defaultTimezone: "Asia/Phnom_Penh",
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxt/image"],
+  modules: [
+    "nuxt-i18n",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
+    "@nuxt/image",
+    "@nuxtjs/toast",
+  ],
   // Nuxt Axios
   axios: {
     proxy:
@@ -78,10 +93,61 @@ export default {
       },
     },
   },
+  // Sitemap Config
+  sitemap: {
+    hostname: process.env.WEB_URL,
+    gzip: true,
+    routes: createSitemapRoutes,
+  },
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        file: "en-US.json",
+        dir: "ltr",
+        moment: "en",
+      },
+      {
+        code: "kh",
+        iso: "kh-KH",
+        file: "kh-KH.json",
+        dir: "ltr",
+        moment: "kh",
+      },
+    ],
+    defaultLocale: "kh",
+    lazy: true,
+    langDir: "locales/",
+    noPrefixDefaultLocale: true,
+    vueI18n: {
+      fallbackLocale: "kh",
+      messages: {
+        "en-US": require("./locales/en-US"),
+        "kh-KH": require("./locales/kh-KH"),
+      },
+    },
+  },
+
+  toast: {
+    position: "top-center",
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ["epic-spinners"],
+    html: {
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    },
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
   },
   loading: false,
   publicRuntimeConfig: {

@@ -9,12 +9,13 @@
       overflow-auto overflow-y-scroll
     "
   >
-    <NavBar></NavBar>
+    <NavBar />
     <nuxt />
   </main>
 </template>
 <script>
-import NavBar from "../components/NavBar/nav-bar";
+import NavBar from "~/components/NavBar/nav-bar";
+
 export default {
   components: { NavBar },
 };
