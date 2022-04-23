@@ -2,71 +2,52 @@
   <div>
     <input id="login-modal" type="checkbox" class="modal-toggle" />
     <div class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box bg-gray-100">
+      <form
+        class="modal-box relative bg-gray-100"
+        method="post"
+        @submit.prevent="login"
+      >
+        <label
+          for="login-modal"
+          class="btn btn-sm btn-circle absolute right-2 top-2"
+          >✕</label
+        >
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
           {{ $t("login") }}
         </h2>
         <div class="relative mb-4">
-          <label for="username" class="leading-7 text-sm text-gray-600">{{
+          <label for="login-username" class="leading-7 text-sm text-gray-600">{{
             $t("username")
           }}</label>
           <input
-            id="username"
+            id="login-username"
             v-model="username"
             type="text"
-            name="username"
+            name="login-username"
             :required="true"
-            autocomplete="username"
-            class="
-              w-full
-              bg-white
-              rounded
-              border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base
-              outline-none
-              text-gray-700
-              py-1
-              px-3
-              leading-8
-              transition-colors
-              duration-200
-              ease-in-out
-            "
+            autocomplete="login-username"
+            class="tfd-input"
           />
         </div>
         <div class="relative mb-4">
-          <label for="password" class="leading-7 text-sm text-gray-600">{{
+          <label for="login-password" class="leading-7 text-sm text-gray-600">{{
             $t("password")
           }}</label>
           <input
-            id="password"
+            id="login-password"
             v-model="password"
             type="password"
-            name="password"
+            name="login-password"
             :required="true"
-            class="
-              w-full
-              bg-white
-              rounded
-              border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base
-              outline-none
-              text-gray-700
-              py-1
-              px-3
-              leading-8
-              transition-colors
-              duration-200
-              ease-in-out
-            "
+            class="tfd-input"
           />
         </div>
         <div class="modal-action justify-center">
-          <ShadowButton text="login" color="bg-green-700" @onClick="login" />
+          <button type="submit">
+            <ShadowButton text="login" color="bg-green-700" />
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -97,10 +78,11 @@ export default {
         this.logging = false;
         this.username = "";
         this.password = "";
-      } catch (e) {
+      } catch (error) {
         this.logging = false;
-        this.ifError = true;
-        this.errorMsg = e.response.data.message;
+        this.$toast.error(error.response.data.message, {
+          duration: 4000,
+        });
       }
     },
   },
