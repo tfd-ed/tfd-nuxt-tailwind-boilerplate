@@ -1,8 +1,5 @@
 <template>
   <div>
-    <t-alert :show="ifError" variant="danger" @hidden="ifError = false">
-      <span v-html="errorMsg"></span>
-    </t-alert>
     <t-modal :click-to-close="true" :hide-close-button="true" name="new-user">
       <div class="container w-full mx-auto py-6 md:w-4/5 w-11/12 px-6">
         <div>

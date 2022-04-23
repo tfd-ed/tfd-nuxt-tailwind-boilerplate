@@ -46,7 +46,13 @@ export default {
     defaultTimezone: "Asia/Phnom_Penh",
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["nuxt-i18n", "@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxt/image"],
+  modules: [
+    "nuxt-i18n",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
+    "@nuxt/image",
+    "@nuxtjs/toast",
+  ],
   // Nuxt Axios
   axios: {
     proxy:
@@ -121,6 +127,10 @@ export default {
         "kh-KH": require("./locales/kh-KH"),
       },
     },
+  },
+
+  toast: {
+    position: "top-center",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -60,5 +60,6 @@
   "submit": "Submit",
   "submit_success": "Thanks very much! We received your request! We'll contact you back.",
   "username": "username",
-  "password": "password"
+  "password": "password",
+  "confirmPassword": "Confirm"
 }
