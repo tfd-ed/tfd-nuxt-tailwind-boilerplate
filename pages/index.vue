@@ -8,6 +8,7 @@
     >
       {{ errorMsg }}
     </t-alert>
+    <LoginModal />
     <t-modal :click-to-close="true" :hide-close-button="true" name="login">
       <div class="container w-full mx-auto py-6 md:w-4/5 w-11/12 px-6">
         <div>
@@ -48,24 +49,7 @@
       class="container px-5 py-24 mx-auto flex flex-wrap items-center"
     >
       <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-        <nuxt-img
-          src="https://i.imgur.com/SZqGIpL.png"
-          class="w-20 mx-auto mb-12"
-        />
-        <h2
-          class="
-            max-w-3xl
-            text-5xl
-            md:text-6xl
-            font-bold
-            mx-auto
-            dark:text-white
-            text-gray-800 text-left
-            py-2
-          "
-        >
-          Teaching For Development
-        </h2>
+        <nuxt-img src="/tfd-logo.png" class="w-20 mx-auto mb-12" />
         <p
           class="
             max-w-3xl
@@ -76,20 +60,10 @@
             text-gray-800
             py-2
             text-left
+            leading-relaxed
           "
-        >
-          <br />
-          គឺជាគំនិតផ្តួចផ្តើមមួយ ក្នុងគោលបំណងពាំនាំ ចំនេះដឹងថ្មី នឹង
-          ប្លែកៗដែលមិនត្រូវបានចាប់អារម្មណ៍ពីសារៈសំខាន់របស់វា ពីមុនមក។
-          គំនិតផ្តួចផ្តើមនេះក៏ធ្វើឡើងក្នុងគោលបំណង ពង្រឹង នឹងជំរុញការគិតបែប
-          វិទ្យាសាស្រ្តប្រកបដោយហេតុផល នឹង ការវិភាគច្បាស់លាស់។<br /><br />
-          ទំនាក់ទំនង៖ សារអេឡិចត្រូនិច៖ teachingfordevelopment@gmail.com<br /><br />
-          <b>TFD(Teaching For Development)</b><br />
-          is a new initiative aiming at bringing uncovered facts that people
-          might not be aware of to the public. This initiative also hopes to
-          inspire scientific ways of thinking with logic and comprehensive
-          analysis.
-        </p>
+          v-html="$t('tfd_mission')"
+        ></p>
       </div>
       <div
         class="
@@ -106,12 +80,12 @@
         "
       >
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
-          Sign Up
+          {{ $t("sign_up") }}
         </h2>
         <div class="relative mb-4">
-          <label for="full-name" class="leading-7 text-sm text-gray-600"
-            >Full Name</label
-          >
+          <label for="full-name" class="leading-7 text-sm text-gray-600">{{
+            $t("name")
+          }}</label>
           <input
             id="full-name"
             type="text"
@@ -135,9 +109,9 @@
           />
         </div>
         <div class="relative mb-4">
-          <label for="email" class="leading-7 text-sm text-gray-600"
-            >Email</label
-          >
+          <label for="email" class="leading-7 text-sm text-gray-600">{{
+            $t("email")
+          }}</label>
           <input
             id="email"
             type="email"
@@ -161,13 +135,8 @@
           />
         </div>
         <div class="flex flex-row justify-center space-x-4">
-          <ShadowButton text="login" @onClick="showLogin" />
-          <ShadowButton text="sign up" />
+          <ShadowButton text="sign_up" color="bg-tfd" />
         </div>
-
-        <p class="text-xs text-gray-500 mt-3">
-          Literally you probably haven't heard of them jean shorts.
-        </p>
       </div>
     </div>
     <!--    <div-->
@@ -257,8 +226,9 @@
 <script>
 import LoginLoading from "../components/Loadings/login-loading";
 import ShadowButton from "~/components/button/shadow-button";
+import LoginModal from "~/components/Forms/login-modal";
 export default {
-  components: { ShadowButton, LoginLoading },
+  components: { LoginModal, ShadowButton, LoginLoading },
   middleware: "guest",
   data() {
     return {

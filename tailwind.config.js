@@ -41,7 +41,17 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+          primary: "#1f2937",
+        },
+      },
+    ],
+  },
+  plugins: [require("@tailwindcss/forms"), require("daisyui")],
   future: {
     purgeLayersByDefault: true,
   },

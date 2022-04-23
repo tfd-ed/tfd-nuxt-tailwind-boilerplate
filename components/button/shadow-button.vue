@@ -14,9 +14,9 @@
         inset-0
         transition-transform
         translate-x-0 translate-y-0
-        bg-tfd
         group-hover:translate-y-1.5 group-hover:translate-x-1.5
       "
+      :class="color"
     ></span>
 
     <span
@@ -34,14 +34,14 @@
       "
       @click="handleClick"
     >
-      {{ text }}
+      {{ $t(text) }}
     </span>
   </div>
 </template>
 <script>
 export default {
   name: "ShadowButton",
-  props: ["text"],
+  props: ["text", "color"],
   emits: ["onClick"],
   methods: {
     handleClick() {
