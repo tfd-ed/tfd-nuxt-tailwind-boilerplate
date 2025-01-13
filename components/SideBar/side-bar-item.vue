@@ -1,8 +1,5 @@
 <template>
-  <NuxtLink
-    :id="name"
-    :to="link"
-    class="
+  <NuxtLink :id="name" :to="link" class="
       w-full
       dark:text-white
       flex
@@ -14,8 +11,7 @@
       duration-200
       justify-start
       border-l-4
-    "
-  >
+    ">
     <slot></slot>
     <span class="mx-2 text-sm font-normal"> {{ name }} </span>
   </NuxtLink>

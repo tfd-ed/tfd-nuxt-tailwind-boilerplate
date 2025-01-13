@@ -1,11 +1,5 @@
 <template>
-  <ContentLoader
-    :width="1360"
-    :height="900"
-    viewBox="0 0 1360 900"
-    primary-color="#fff"
-    secondary-color="#f3f4f6"
-  >
+  <ContentLoader :width="1360" :height="900" viewBox="0 0 1360 900" primary-color="#fff" secondary-color="#f3f4f6">
     <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
     <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
     <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />

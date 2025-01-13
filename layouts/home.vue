@@ -10,8 +10,8 @@
   </main>
 </template>
 <script>
-import NavBarHome from "../components/NavBar/nav-bar-home";
-import SideBar from "../components/SideBar/side-bar";
+import NavBarHome from "@/components/NavBar/nav-bar-home";
+import SideBar from "@/components/SideBar/side-bar";
 export default {
   components: { SideBar, NavBarHome },
 };
